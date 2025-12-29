@@ -18,10 +18,10 @@ data class Accumulator(
 }
 
 fun main() {
-    val path = Path("src/main/kotlin/nl/joris2k/adventofcode/y2025/day1/input.txt")
+    val data = Path("src/main/resources/nl/joris2k/adventofcode/y2025/day1/input.txt")
 
     // Computes final accumulator via signed input deltas
-    val result = path.useLines { lines ->
+    val result = data.useLines { lines ->
         lines
             .map {
                 toClicks(it)

@@ -5,13 +5,13 @@ import kotlin.io.path.useLines
 
 fun isOccupied(value: Char) = value == '@'
 
-fun List<String>.xyIndexes() = sequence {
+fun List<CharSequence>.xyIndexes() = sequence {
     for (x in indices)
         for (y in this@xyIndexes[x].indices)
             yield(x to y)
 }
 
-fun List<String>.get(index: Pair<Int,Int>): Char {
+fun List<CharSequence>.get(index: Pair<Int,Int>): Char {
     val (x, y) = index
     if (x < 0 || y < 0 || x >= size || y >= this[x].length)
         return '.'
@@ -31,7 +31,7 @@ fun adjacentIndexes(x: Int, y: Int): Sequence<Pair<Int, Int>> = sequence {
 }
 fun adjacentIndexes(index: Pair<Int,Int>) = adjacentIndexes(index.first, index.second)
 
-fun accessibleLessThanFourAdjacent(input: List<String>)  =
+fun accessibleLessThanFourAdjacent(input: List<CharSequence>)  =
     input.xyIndexes().filter {
         isOccupied(input.get(it))
     }.filter { index ->
